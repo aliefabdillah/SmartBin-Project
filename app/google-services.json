@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "535405324576",
+    "firebase_url": "https://smartbin-35eab-default-rtdb.firebaseio.com",
+    "project_id": "smartbin-35eab",
+    "storage_bucket": "smartbin-35eab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535405324576:android:2c635c574b1f55421bcf45",
+        "android_client_info": {
+          "package_name": "com.dicoding.smartbin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535405324576-jbrcss59n4rfus64clqkp4mgcqptgivp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.smartbin",
+            "certificate_hash": "d5953b0853712aa74a40799aeba8120cd9d0efc4"
+          }
+        },
+        {
+          "client_id": "535405324576-cvgeka4s62as0eljrf9vrh831bb8kmee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRDRBgQQPpTOrAGUn_2GXnRiTF2St1E4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535405324576-cvgeka4s62as0eljrf9vrh831bb8kmee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

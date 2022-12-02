@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    Delete if not using color   -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -12,6 +13,14 @@
     
     <color name="cream">#FFF3AD</color>
     <color name="dark_green">#0F3D3E</color>
-    <color name="green">#2C822D</color>
     <color name="light_green">#DBFF00</color>
+
+<!--    New Color   -->
+
+    <color name="green_bold">#0F3D3E</color>
+    <color name="green">#2C822D</color>
+    <color name="neon">#DBFF00</color>
+    <color name="yellowneon">#FFF3AD</color>
+
+
 </resources>

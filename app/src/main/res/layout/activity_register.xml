@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context=".ui.register.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/logo_smartbin"
+        android:layout_width="146dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="100dp"
+        android:scaleType="center"
+        android:src="@drawable/smart_bin_small"
+        android:contentDescription="@string/logo_smartbin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.dicoding.smartbin.ui.customview.InputEditText
+        android:id="@+id/ed_register_username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:drawablePadding="8dp"
+        android:hint="@string/hint_username"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_smartbin" />
+
+    <com.dicoding.smartbin.ui.customview.InputEditText
+        android:id="@+id/ed_register_email"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:hint="@string/hint_email"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_register_username"
+        app:layout_constraintStart_toStartOf="@+id/ed_register_username"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_username" />
+
+    <com.dicoding.smartbin.ui.customview.PasswordEditText
+        android:id="@+id/ed_register_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_register_email"
+        app:layout_constraintStart_toStartOf="@+id/ed_register_email"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_email" />
+
+    <com.dicoding.smartbin.ui.customview.InputEditText
+        android:id="@+id/ed_register_komplek"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:hint="@string/hint_komplek"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_register_password"
+        app:layout_constraintStart_toStartOf="@+id/ed_register_password"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password" />
+
+    <com.dicoding.smartbin.ui.customview.InputEditText
+        android:id="@+id/ed_register_nomor"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:hint="@string/hint_nomor"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_register_komplek"
+        app:layout_constraintStart_toStartOf="@+id/ed_register_komplek"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_komplek" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="?attr/colorPrimaryVariant"
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_nomor" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

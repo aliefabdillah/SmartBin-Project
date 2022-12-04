@@ -1,5 +1,6 @@
 package com.dicoding.smartbin.ui.home
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,16 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        binding.progressBar.max = 100
-        binding.progressBar.progress = 50
+        /* ==== Detail ==== */
+        binding.tvNamaValue.text = ": Hilman Fauzi"
+        binding.tvBlokValue.text = ": A1 / No. 245"
+
+        /* ==== Volume Tempat Sampah ==== */
+        val currentVolume = 90 // volume
+        binding.tvVolumePercent.text = "$currentVolume%"
+        ObjectAnimator.ofInt(binding.progressBar, "progress", currentVolume)
+            .setDuration(2000)
+            .start()
 
         return binding.root
     }

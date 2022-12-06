@@ -61,6 +61,9 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.firebase:firebase-client-android:2.3.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //testing
     testImplementation 'junit:junit:4.13.2'

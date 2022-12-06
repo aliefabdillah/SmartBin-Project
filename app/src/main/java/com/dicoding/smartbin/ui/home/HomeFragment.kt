@@ -16,18 +16,20 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        /* ==== Detail ==== */
+        setupView()
+
+        return binding.root
+    }
+
+    private fun setupView() {
         binding.tvNamaValue.text = ": Hilman Fauzi"
         binding.tvBlokValue.text = ": A1 / No. 245"
 
-        /* ==== Volume Tempat Sampah ==== */
-        val currentVolume = 90 // volume
+        val currentVolume = 90 // data volume dari firebase
         binding.tvVolumePercent.text = "$currentVolume%"
         ObjectAnimator.ofInt(binding.progressBar, "progress", currentVolume)
             .setDuration(2000)
             .start()
-
-        return binding.root
     }
 
     override fun onDestroyView() {

@@ -7,7 +7,7 @@
 <!--    <string name="password">Password</string>-->
 <!--    <string name="passwordsalah">Password kurang dari 6 karakter</string>-->
     <string name="login">Login</string>
-    <string name="donthaveacc">Belum mempunyai akun ?</string>
+    <string name="dont_have_acc">Belum mempunyai akun ?</string>
 
     <string name="error_empty">Please fill in the field!</string>
     <string name="error_email">Invalid Email Address!</string>

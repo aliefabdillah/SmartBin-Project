@@ -6,17 +6,23 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.dicoding.smartbin.R
+import com.dicoding.smartbin.databinding.ActivitySplashScreenBinding
 import com.dicoding.smartbin.ui.login.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        supportActionBar?.hide()
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        },4000)
+        },2000)
     }
 }

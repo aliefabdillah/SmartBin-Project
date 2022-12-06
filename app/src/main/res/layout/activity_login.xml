@@ -22,7 +22,7 @@
         android:contentDescription="@string/logo_smartbin" />
 
     <com.dicoding.smartbin.ui.customview.InputEditText
-        android:id="@+id/email_field"
+        android:id="@+id/ed_login_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -33,14 +33,14 @@
         android:hint="@string/hint_email"
         android:textColorHint="@color/dark_green"
         android:inputType="textWebEmailAddress"
-        app:layout_constraintBottom_toTopOf="@id/password_field"
+        app:layout_constraintBottom_toTopOf="@id/ed_login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_smartBin"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
     <com.dicoding.smartbin.ui.customview.PasswordEditText
-        android:id="@+id/password_field"
+        android:id="@+id/ed_login_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -53,7 +53,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_field"
+        app:layout_constraintTop_toBottomOf="@+id/ed_login_email"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
@@ -67,7 +67,7 @@
         android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_field" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_login_password" />
 
     <TextView
         android:id="@+id/register_text"

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.dicoding.smartbin.R
 import com.dicoding.smartbin.databinding.ActivityRegisterBinding
-import com.dicoding.smartbin.ui.HomeActivity
+import com.dicoding.smartbin.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityRegisterBinding
@@ -18,16 +18,19 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         supportActionBar?.hide()
 
+        setupView()
+    }
+
+    private fun setupView() {
         binding.btnRegister.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v?.id) {
             R.id.btn_register -> {
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
         }
-
     }
 }

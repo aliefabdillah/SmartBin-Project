@@ -15,7 +15,16 @@ class MessageFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
         _binding = FragmentMessageBinding.inflate(inflater,container, false)
+
+        setupView()
+
         return binding.root
+    }
+
+    private fun setupView() {
+        binding.btnRequest.setOnClickListener {
+            // Do nothing.
+        }
     }
 
     override fun onDestroyView() {

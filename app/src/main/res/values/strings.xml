@@ -40,4 +40,17 @@
     <string name="Alamat">Alamat</string>
     <string name="Alamat_hint">Tulis Alamat Disini... </string>
     <string name="request_jemput">Request Jemput</string>
+
+    <string-array name="nomor_rumah">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>

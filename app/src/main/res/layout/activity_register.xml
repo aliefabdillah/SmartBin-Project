@@ -24,7 +24,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:drawablePadding="8dp"
+        android:drawablePadding="18dp"
         android:inputType="text"
         android:hint="@string/hint_username"
         android:textColorHint="@color/dark_green"
@@ -38,7 +38,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:drawablePadding="8dp"
+        android:drawablePadding="18dp"
         android:inputType="textWebEmailAddress"
         android:hint="@string/hint_email"
         android:textColorHint="@color/dark_green"
@@ -52,7 +52,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:drawablePadding="8dp"
+        android:drawablePadding="18dp"
         android:inputType="textPassword"
         android:paddingStart="10dp"
         android:textColorHint="@color/dark_green"
@@ -60,21 +60,21 @@
         app:layout_constraintStart_toStartOf="@+id/ed_register_email"
         app:layout_constraintTop_toBottomOf="@+id/ed_register_email" />
 
-    <com.dicoding.smartbin.ui.customview.InputEditText
+    <!--<com.dicoding.smartbin.ui.customview.InputEditText
         android:id="@+id/ed_register_komplek"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:drawablePadding="8dp"
+        android:drawablePadding="18dp"
         android:inputType="text"
         android:hint="@string/hint_komplek"
         android:textColorHint="@color/dark_green"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/ed_register_password"
         app:layout_constraintStart_toStartOf="@+id/ed_register_password"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_password" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password" />-->
 
-    <com.dicoding.smartbin.ui.customview.InputEditText
+    <!--<com.dicoding.smartbin.ui.customview.InputEditText
         android:id="@+id/ed_register_nomor"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -86,7 +86,57 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/ed_register_komplek"
         app:layout_constraintStart_toStartOf="@+id/ed_register_komplek"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_komplek" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_komplek">
+
+    </com.dicoding.smartbin.ui.customview.InputEditText>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ed_register_komplek"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="300dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="15dp"
+        app:startIconDrawable="@drawable/ic_home"
+        app:layout_constraintEnd_toEndOf="@+id/ed_register_password"
+        app:layout_constraintStart_toStartOf="@+id/ed_register_password"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteKomplek"
+            android:background="@drawable/textbox_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="16dp"
+            android:inputType="none"
+            android:text="@string/hint_nomor"
+            android:textColor="@color/dark_green"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ed_register_nomor"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="300dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="15dp"
+        app:startIconDrawable="@drawable/ic_list"
+        app:layout_constraintEnd_toEndOf="@+id/ed_register_komplek"
+        app:layout_constraintStart_toStartOf="@+id/ed_register_komplek"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_komplek">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteNoRumah"
+            android:background="@drawable/textbox_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="16dp"
+            android:inputType="none"
+            android:text="@string/hint_nomor"
+            android:textColor="@color/dark_green"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_register"

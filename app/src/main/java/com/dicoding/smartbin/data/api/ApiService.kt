@@ -1,4 +1,4 @@
-package com.dicoding.smartbin
+package com.dicoding.smartbin.data.api
 
 import retrofit2.Call
 import retrofit2.http.Field

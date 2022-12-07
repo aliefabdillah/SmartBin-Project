@@ -1,4 +1,4 @@
-package com.dicoding.smartbin
+package com.dicoding.smartbin.data.api
 
 import com.google.gson.annotations.SerializedName
 

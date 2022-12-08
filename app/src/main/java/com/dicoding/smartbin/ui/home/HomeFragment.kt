@@ -34,13 +34,16 @@ class HomeFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.getUser().observe(viewLifecycleOwner){ user ->
-                if (user.isLogin){
-                    binding.tvNamaValue.text = user.name
-                    binding.tvKomplekValue.text = user.komplek
-                    binding.tvBlokValue.text = "${user.Blok} / No. ${user.noRumah}"
-                }else{
-                    startActivity(Intent(activity, LoginActivity::class.java))
-                }
+                binding.tvNamaValue.text = user.name
+                binding.tvKomplekValue.text = user.komplek
+                binding.tvBlokValue.text = "${user.Blok} / No. ${user.noRumah}"
+//                if (user.isLogin){
+//                    binding.tvNamaValue.text = user.name
+//                    binding.tvKomplekValue.text = user.komplek
+//                    binding.tvBlokValue.text = "${user.Blok} / No. ${user.noRumah}"
+//                }else{
+//                    startActivity(Intent(activity, LoginActivity::class.java))
+//                }
             }
         }
 

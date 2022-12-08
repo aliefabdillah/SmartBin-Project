@@ -11,7 +11,7 @@
         android:id="@+id/logo_trashbin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
         android:scaleType="center"
         android:backgroundTint="?attr/colorPrimaryVariant"
         android:src="@drawable/ic_trash_big"

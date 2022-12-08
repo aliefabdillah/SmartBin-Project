@@ -40,7 +40,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_login -> {
                 val email = binding.edLoginEmail.text.toString()
                 val pass = binding.edLoginPassword.text.toString()
-                signInCallback(email, pass)
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+//                signInCallback(email, pass)
             }
             R.id.register_text -> {
                 val intent = Intent(this, RegisterActivity::class.java)

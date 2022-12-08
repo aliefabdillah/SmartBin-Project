@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,14 +7,13 @@
     android:background="?attr/colorPrimary"
     android:orientation="vertical"
     tools:context=".ui.message.MessageFragment"
-    android:padding="32dp"
-    >
+    android:padding="32dp">
 
     <TextView
         android:id="@+id/tv_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="32dp"
         android:text="@string/Alamat"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="25sp"
@@ -43,8 +41,7 @@
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btn_request"
@@ -58,6 +55,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/alamat_box"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

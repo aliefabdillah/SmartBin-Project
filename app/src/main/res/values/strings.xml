@@ -41,6 +41,7 @@
 
     <string name="login_success">Login Success</string>
     <string name="positive_button_text">Next</string>
+    <string name="logout">Logout</string>
 
     <string-array name="nomor_rumah">
         <item>1</item>

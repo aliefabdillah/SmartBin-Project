@@ -1,6 +1,8 @@
 package com.dicoding.smartbin.ui
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
@@ -25,7 +27,8 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#0F3D3E")))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val navView: BottomNavigationView = binding.navView
 

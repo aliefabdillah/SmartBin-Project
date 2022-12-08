@@ -6,7 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import com.dicoding.smartbin.data.Result
 import com.dicoding.smartbin.data.api.ApiService
 import com.dicoding.smartbin.data.api.KomplekResponse
-import com.dicoding.smartbin.data.api.ListkomplekItem
+import com.dicoding.smartbin.data.api.ListKomplekItem
 import com.dicoding.smartbin.utils.EventHandlerToast
 import org.json.JSONObject
 import retrofit2.Call
@@ -15,9 +15,9 @@ import retrofit2.Response
 class DataRepository private constructor(
     private val apiService: ApiService
 ){
-    private val getListKomplek = MediatorLiveData<Result<List<ListkomplekItem>>>()
+    private val getListKomplek = MediatorLiveData<Result<List<ListKomplekItem>>>()
 
-    fun getListKomplek(): LiveData<Result<List<ListkomplekItem>>>{
+    fun getListKomplek(): LiveData<Result<List<ListKomplekItem>>>{
         getListKomplek.value = Result.Loading
         val client = apiService.getKomplek()
 

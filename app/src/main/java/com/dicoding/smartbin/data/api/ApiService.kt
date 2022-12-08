@@ -24,7 +24,7 @@ interface ApiService {
     fun login(
         @Field("email") email: String,
         @Field("password") password: String
-    ):Call<login>
+    ):Call<LoginResponse>
 
     //endpoint daftar Komplek
     @GET("userAPI/listKomplek.php")

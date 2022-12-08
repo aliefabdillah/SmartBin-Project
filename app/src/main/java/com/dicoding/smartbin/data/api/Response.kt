@@ -19,10 +19,18 @@ data class Response(
 	val users: List<UsersItem>
 )
 
-data class UsersItem(
+data class LoginResponse(
+	@field:SerializedName("error")
+	val error: String,
 
-	@field:SerializedName("password")
-	val password: String,
+	@field:SerializedName("message")
+	val message: String,
+
+	@field:SerializedName("user")
+	val user: UsersItem
+)
+
+data class UsersItem(
 
 	@field:SerializedName("name")
 	val name: String,
@@ -35,30 +43,12 @@ data class UsersItem(
 
 	@field:SerializedName("no_rumah")
 	val noRumah: String,
-
-	@field:SerializedName("email")
-	val email: String
-)
-
-data class login(
-
-	@field:SerializedName("name")
-	val name: String,
-
-	@field:SerializedName("id")
-	val id: String,
-
-	@field:SerializedName("nama_komplek")
-	val namaKomplek: String,
-
-	@field:SerializedName("no_rumah")
-	val noRumah: String
 )
 
 data class KomplekResponse(
 
 	@field:SerializedName("listkomplek")
-	val listkomplek: List<ListkomplekItem>,
+	val listkomplek: List<ListKomplekItem>,
 
 	@field:SerializedName("error")
 	val error: String,
@@ -67,7 +57,7 @@ data class KomplekResponse(
 	val message: String,
 )
 
-data class ListkomplekItem(
+data class ListKomplekItem(
 
 	@field:SerializedName("komplek_nama")
 	val komplekNama: String,

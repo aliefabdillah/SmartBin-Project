@@ -39,6 +39,9 @@
     <string name="Alamat_hint">Tulis Alamat Disini... </string>
     <string name="request_jemput">Request Jemput</string>
 
+    <string name="login_success">Login Success</string>
+    <string name="positive_button_text">Next</string>
+
     <string-array name="nomor_rumah">
         <item>1</item>
         <item>2</item>

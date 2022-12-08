@@ -5,21 +5,31 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dicoding.smartbin.R
 import com.dicoding.smartbin.databinding.ActivityHomeBinding
+import com.dicoding.smartbin.modelsfactory.ViewModelFactory
+import com.dicoding.smartbin.ui.home.HomeFragment
+import com.dicoding.smartbin.ui.home.HomeViewModel
 import com.dicoding.smartbin.ui.login.LoginActivity
+import kotlinx.coroutines.NonCancellable.cancel
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private val homeViewModel: HomeViewModel by viewModels { ViewModelFactory.getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +49,17 @@ class HomeActivity : AppCompatActivity() {
             R.id.navigation_home, R.id.navigation_message, R.id.navigation_about))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        setupData()
+    }
+
+    private fun setupData() {
+        homeViewModel.getUser().observe(this){ data ->
+            if (!data.isLogin) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,9 +72,18 @@ class HomeActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.menuLogout -> {
                 // viewModel.logout()
-                val intent = Intent(this@HomeActivity, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
+                AlertDialog.Builder(this).apply {
+                    setTitle(R.string.logout_title)
+                    setMessage(R.string.logout_message)
+                    setPositiveButton(getString(R.string.logout)) { _, _ ->
+                        homeViewModel.logout()
+                    }
+                    setNegativeButton(R.string.cancel) { dialog, _ ->
+                        dialog.cancel()
+                    }
+                    create()
+                    show()
+                }
             }
         }
         return true

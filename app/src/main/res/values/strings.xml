@@ -15,7 +15,7 @@
     <string name="hint_password">Password</string>
     <string name="hint_username">Username</string>
     <string name="hint_email">Email</string>
-    <string name="hint_komplek">Nama Komplek</string>
+    <string name="hint_komplek">Nama Komplek - Blok</string>
     <string name="hint_nomor">Nomor Rumah</string>
 
     <string name="register">Register</string>

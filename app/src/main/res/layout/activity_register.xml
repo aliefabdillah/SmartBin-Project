@@ -109,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingBottom="16dp"
+            android:imeOptions="actionNext"
             android:inputType="none"
             android:text="@string/hint_komplek"
             android:textColor="@color/dark_green"/>
@@ -153,5 +154,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_register_nomor" />
 
+    <ProgressBar
+        android:id="@+id/loadingIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:indeterminateTint="?attr/colorPrimaryVariant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

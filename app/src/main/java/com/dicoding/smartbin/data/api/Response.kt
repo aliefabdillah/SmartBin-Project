@@ -2,6 +2,14 @@ package com.dicoding.smartbin.data.api
 
 import com.google.gson.annotations.SerializedName
 
+data class RegisterRespone(
+	@field:SerializedName("error")
+	val error: String,
+
+	@field:SerializedName("message")
+	val message: String,
+)
+
 data class Response(
 
 	@field:SerializedName("error")
@@ -47,4 +55,26 @@ data class login(
 	val noRumah: String
 )
 
+data class KomplekResponse(
 
+	@field:SerializedName("listkomplek")
+	val listkomplek: List<ListkomplekItem>,
+
+	@field:SerializedName("error")
+	val error: String,
+
+	@field:SerializedName("message")
+	val message: String,
+)
+
+data class ListkomplekItem(
+
+	@field:SerializedName("komplek_nama")
+	val komplekNama: String,
+
+	@field:SerializedName("blok")
+	val blok: String,
+
+	@field:SerializedName("id")
+	val id: String
+)

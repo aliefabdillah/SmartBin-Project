@@ -2,13 +2,22 @@ package com.dicoding.smartbin.ui.message
 
 import android.content.Intent
 import android.net.Uri
+import android.net.wifi.rtt.CivicLocationKeys
+import android.net.wifi.rtt.CivicLocationKeys.STATE
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.dicoding.smartbin.R
 import com.dicoding.smartbin.databinding.FragmentMessageBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
 import java.net.URLEncoder
@@ -31,7 +40,7 @@ class MessageFragment : Fragment() {
     private fun setupView() {
         binding.btnRequest.setOnClickListener {
             val message = binding.messageBox.text.toString()
-//            composeEmail(message)
+            //            composeEmail(message)
             composeWA(message)
         }
     }
@@ -61,7 +70,7 @@ class MessageFragment : Fragment() {
                 No. Rumah : ${it.noRumah}
                 Pesan : $message
             """.trimIndent()
-            val uri = "https://api.whatsapp.com/send?phone=$Phone"+"&text=" + URLEncoder.encode(text, "UTF-8")
+            val uri = "https://api.whatsapp.com/send?phone=${Phone}"+"&text=" + URLEncoder.encode(text, "UTF-8")
             val i =  Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(uri)
             startActivity(i)
@@ -75,6 +84,7 @@ class MessageFragment : Fragment() {
     }
 
     companion object {
+        private var STATE = false
         private const val Phone = "6282215760138"
         private const val ADDRESS = "aliefmabdillah09@gmail.com"
         private const val SUBJECT = "REQUEST JEMPUT"

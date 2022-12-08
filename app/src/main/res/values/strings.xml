@@ -2,10 +2,6 @@
     <string name="app_name">SmartBin</string>
     <string name="pass_requirement">Password must contain at least 6 characters!</string>
 
-<!--    <string name="email">Email</string>-->
-<!--    <string name="emailsalah">Masukkan E-mail dengan benar</string>-->
-<!--    <string name="password">Password</string>-->
-<!--    <string name="passwordsalah">Password kurang dari 6 karakter</string>-->
     <string name="login">Login</string>
     <string name="dont_have_acc">Belum mempunyai akun ?</string>
 
@@ -30,10 +26,12 @@
     <string name="logo_smartbin">Logo SmartBin</string>
 
     <string name="home_detail">Detail</string>
-    <string name="home_nama">Nama Pemilik</string>
-    <string name="home_nama_value">: Nama Kamu Disini</string>
-    <string name="home_blok">Blok / No. Rumah</string>
-    <string name="home_blok_value">: 4C / No. 25</string>
+    <string name="home_nama">Nama Pemilik :</string>
+    <string name="home_nama_value"> Nama Kamu Disini</string>
+    <string name="home_komplek">Komplek :</string>
+    <string name="home_komplek_value"> Komplek XXX</string>
+    <string name="home_blok">Blok / No. Rumah :</string>
+    <string name="home_blok_value"> 4C / No. 25</string>
     <string name="home_volume">Volume Tempat Sampah</string>
     <string name="home_volume_percent">0%</string>
 

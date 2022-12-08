@@ -14,7 +14,7 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.100.7/")//di isi sama IP internet recommend dari hotspot
+            .baseUrl("http://192.168.217.70/")//di isi sama IP internet recommend dari hotspot
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

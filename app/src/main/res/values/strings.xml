@@ -36,7 +36,7 @@
     <string name="home_volume_percent">0%</string>
 
     <string name="Alamat">Alamat</string>
-    <string name="Alamat_hint">Tulis Alamat Disini... </string>
+    <string name="Message_hint">Tulis Pesan Anda Disini... </string>
     <string name="request_jemput">Request Jemput</string>
 
     <string name="login_success">Login Success</string>

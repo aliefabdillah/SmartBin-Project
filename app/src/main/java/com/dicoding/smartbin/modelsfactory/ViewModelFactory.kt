@@ -10,6 +10,7 @@ import com.dicoding.smartbin.data.repository.DataRepository
 import com.dicoding.smartbin.data.repository.UserRepository
 import com.dicoding.smartbin.ui.home.HomeViewModel
 import com.dicoding.smartbin.ui.login.LoginViewModel
+import com.dicoding.smartbin.ui.message.MessageViewModel
 import com.dicoding.smartbin.ui.register.RegisterViewModel
 import com.dicoding.smartbin.utils.Injection
 
@@ -28,6 +29,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(userRepository) as T
+            }
+            modelClass.isAssignableFrom(MessageViewModel::class.java) -> {
+                MessageViewModel(userRepository) as T
             }
             else -> throw IllegalArgumentException("Uknown ViewModel Class: " + modelClass.name)
         }

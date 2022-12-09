@@ -37,6 +37,7 @@
 
     <string name="Alamat">Alamat</string>
     <string name="Message_hint">Tulis Pesan Anda Disini... </string>
+    <string name="Message_disclaimer">*Request hanya 1 kali per hari</string>
     <string name="request_jemput">Request Jemput</string>
 
     <string name="login_success">Login Success</string>

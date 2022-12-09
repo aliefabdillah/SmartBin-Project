@@ -20,7 +20,7 @@ import com.dicoding.smartbin.data.local.UserModel
 import com.dicoding.smartbin.databinding.FragmentHomeBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
 import com.dicoding.smartbin.ui.HomeActivity
-import com.dicoding.smartbin.utils.AlarmReceiver
+import com.dicoding.smartbin.utils.ForegroundService
 import com.firebase.client.DataSnapshot
 import com.firebase.client.Firebase
 import com.firebase.client.FirebaseError
@@ -31,26 +31,21 @@ import java.util.*
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentHomeBinding
 
     private val homeViewModel: HomeViewModel by viewModels { ViewModelFactory.getInstance(requireActivity())}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         Firebase.setAndroidContext(requireActivity())
-        setupView()
-
-        return binding.root
-    }
-
-    private fun setupView() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.getUser().observe(viewLifecycleOwner){ user ->
                 renderView(user)
             }
         }
+
+        return binding.root
     }
 
     private fun renderView(user: UserModel) {
@@ -74,17 +69,20 @@ class HomeFragment : Fragment() {
                                 .start()
 
                             if(volume == 100){
-                                createNotification(user.name)
-//                                val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-//                                val currentTime = Calendar.getInstance().time
-//                                val title = getString(R.string.notif_title, user.name)
-//                                val message = getString(R.string.notif_message)
-////                                Toast.makeText(requireActivity(), dateFormat.format(currentTime), Toast.LENGTH_SHORT).show()
-//                                val alarmReceiver = AlarmReceiver()
-//                                alarmReceiver.setRepeatingAlarm(requireActivity(), title, message, dateFormat.format(currentTime))
-                            }else{
-                                val alarmReceiver = AlarmReceiver()
-//                                alarmReceiver.cancelAlarm(requireActivity())
+                                val sp = context?.getSharedPreferences("SmartBin", Context.MODE_PRIVATE)
+                                val requestState = sp?.getBoolean("REQUEST_STATE", false)
+
+                                val intent = Intent(context, ForegroundService::class.java)
+                                intent.putExtra("name", user.name)
+                                if (!requestState!!){
+                                    if (Build.VERSION.SDK_INT >= 26) {
+                                        activity?.startForegroundService(intent)
+                                    } else {
+                                        activity?.startService(intent)
+                                    }
+                                }else{
+                                    activity?.stopService(intent)
+                                }
                             }
                         }else{
                             val dataRef = dataSnapshot.ref
@@ -134,9 +132,9 @@ class HomeFragment : Fragment() {
         mNotifManager.notify(NOTIFICATION_ID, notification)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun cancelNotification() {
+        val mNotifManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        mNotifManager.cancel(NOTIFICATION_ID)
     }
 
     companion object{

@@ -41,6 +41,7 @@ class MessageFragment : Fragment() {
         val sp = context!!.getSharedPreferences("SmartBin", Context.MODE_PRIVATE)
         val savedDateTime = sp.getString("CLICK_DATE", "")
         if ("" == savedDateTime) {
+            sp.edit().putBoolean("REQUEST_STATE", false)
             binding.btnRequest.isEnabled = true
             binding.btnRequest.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.light_green))
         } else {
@@ -50,6 +51,7 @@ class MessageFragment : Fragment() {
                 binding.btnRequest.isEnabled = false
                 binding.btnRequest.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.grey))
             }else{
+                sp.edit().putBoolean("REQUEST_STATE", false)
                 binding.btnRequest.isEnabled = true
                 binding.btnRequest.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.light_green))
             }
@@ -68,6 +70,7 @@ class MessageFragment : Fragment() {
             val sp = context!!.getSharedPreferences("SmartBin", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sp.edit()
             editor.putString("CLICK_DATE", dateString)
+            editor.putBoolean("REQUEST_STATE", true)
             editor.commit()
 
             val message = binding.messageBox.text.toString()

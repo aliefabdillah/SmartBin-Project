@@ -47,6 +47,9 @@
     <string name="logout_message">Are you sure to logout?</string>
     <string name="cancel">Cancel</string>
 
+    <string name="notif_title">Halo %s!</string>
+    <string name="notif_message">Tempat sampahmu sudah penuh!, segera beri pesan ke petugas yaa…</string>
+
     <string-array name="nomor_rumah">
         <item>1</item>
         <item>2</item>

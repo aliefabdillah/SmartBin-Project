@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "535405324576-jbrcss59n4rfus64clqkp4mgcqptgivp.apps.googleusercontent.com",
+          "client_id": "535405324576-8vrvca3lo493101f3ufhpu6juqplbdpk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.smartbin",
+            "certificate_hash": "dbf92a79db5cb6a2fcc2a4dc4762bb405790829a"
+          }
+        },
+        {
+          "client_id": "535405324576-mm3tc3c1jcm5iplttai2as0sd131lur1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.dicoding.smartbin",

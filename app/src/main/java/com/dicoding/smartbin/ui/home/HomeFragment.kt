@@ -62,7 +62,10 @@ class HomeFragment : Fragment() {
                 data.addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()){
-                            val volume = (dataSnapshot.value as Long).toInt()
+                            var volume = (dataSnapshot.value as Long).toInt()
+                            if (volume > 100){
+                                volume = 100
+                            }
                             tvVolumePercent.text = "$volume%"
                             ObjectAnimator.ofInt(binding.progressBar, "progress", volume)
                                 .setDuration(2000)

@@ -87,6 +87,9 @@ class HomeFragment : Fragment() {
                         }else{
                             val dataRef = dataSnapshot.ref
                             dataRef.setValue(0)
+                            ObjectAnimator.ofInt(binding.progressBar, "progress", (dataSnapshot.value as Long).toInt())
+                            .setDuration(2000)
+                                .start()
                         }
                     }
 

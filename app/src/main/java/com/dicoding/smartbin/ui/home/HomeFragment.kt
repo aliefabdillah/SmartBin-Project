@@ -1,8 +1,6 @@
 package com.dicoding.smartbin.ui.home
 
 import android.animation.ObjectAnimator
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -10,11 +8,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.dicoding.smartbin.R
 import com.dicoding.smartbin.data.local.UserModel
 import com.dicoding.smartbin.databinding.FragmentHomeBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
@@ -85,7 +81,6 @@ class HomeFragment : Fragment() {
 
                                     if (!requestState){
                                         CHECK = true
-//                                    createNotification(user.name)
 
                                         if (Build.VERSION.SDK_INT >= 26) {
                                             requireActivity().startForegroundService(intent)
@@ -93,9 +88,6 @@ class HomeFragment : Fragment() {
                                             requireActivity().startService(intent)
                                         }
                                     }else{
-//                                    if (CHECK){
-//                                        cancelNotification()
-//                                    }
                                         if (CHECK){
                                             requireActivity().stopService(intent)
                                             CHECK = false
@@ -122,46 +114,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun createNotification(name: String) {
-
-        val activity = activity
-        if (activity != null && isAdded){
-            val mNotifManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-            val builder = NotificationCompat.Builder(requireActivity(), CHANNEL_ID)
-                .setSmallIcon(R.drawable.smart_bin_small)
-                .setContentTitle(getString(R.string.notif_title, name))
-                .setContentText(getString(R.string.notif_message))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSound(null)
-                .setAutoCancel(true)
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                /* Create or update. */
-                val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
-                channel.description = CHANNEL_NAME
-                builder.setChannelId(CHANNEL_ID)
-                mNotifManager.createNotificationChannel(channel)
-            }
-
-            val notification = builder.build()
-            mNotifManager.notify(NOTIFICATION_ID, notification)
-        }
-
-    }
-
-    fun cancelNotification() {
-
-        if (activity != null && isAdded){
-            val mNotifManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            mNotifManager.cancel(NOTIFICATION_ID)
-        }
-    }
-
     companion object{
-        private const val CHANNEL_ID = "FULL_NOTIFICATION"
-        private const val CHANNEL_NAME = "SmartBin Channel"
-        private const val NOTIFICATION_ID = 1
         private var CHECK = false
     }
 

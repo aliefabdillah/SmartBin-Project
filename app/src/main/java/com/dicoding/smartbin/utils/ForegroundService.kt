@@ -8,6 +8,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.dicoding.smartbin.R
+import com.dicoding.smartbin.ui.HomeActivity
 import com.dicoding.smartbin.ui.message.MessageFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,16 +31,6 @@ class ForegroundService : Service() {
             val notification = createNotification("")
             startForeground(NOTIFICATION_ID, notification)
         }
-
-//        serviceScope.launch {
-//            for (i in 1..120) {
-//                delay(1000)
-//            }
-//            stopForeground(false)
-//            val mNotifManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//            mNotifManager.cancelAll()
-//            stopSelf()
-//        }
         return START_STICKY
     }
 
@@ -50,7 +41,7 @@ class ForegroundService : Service() {
     }
     
     private fun createNotification(user: String): Notification{
-        val intent = Intent(this, MessageFragment::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         val pendingFlags: Int = if (Build.VERSION.SDK_INT >= 23) {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         } else {

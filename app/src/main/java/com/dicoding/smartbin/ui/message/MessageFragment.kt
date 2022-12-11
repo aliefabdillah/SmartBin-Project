@@ -16,16 +16,13 @@ import com.dicoding.smartbin.R
 import com.dicoding.smartbin.databinding.ActivityHomeBinding
 import com.dicoding.smartbin.databinding.FragmentMessageBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
-import com.dicoding.smartbin.ui.home.HomeFragment
-import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class MessageFragment : Fragment() {
 
-    private var _binding: FragmentMessageBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding : FragmentMessageBinding
     private lateinit var homeActivityBinding: ActivityHomeBinding
 
     private val messageViewModel: MessageViewModel by viewModels { ViewModelFactory.getInstance(requireActivity()) }
@@ -35,7 +32,7 @@ class MessageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMessageBinding.inflate(inflater,container, false)
+        binding = FragmentMessageBinding.inflate(inflater,container, false)
         homeActivityBinding = ActivityHomeBinding.inflate(layoutInflater)
 
         val sp = context!!.getSharedPreferences("SmartBin", Context.MODE_PRIVATE)
@@ -76,13 +73,6 @@ class MessageFragment : Fragment() {
             val message = binding.messageBox.text.toString()
             composeEmail(message)
 
-            //set fragment to homeactivity
-            val fragment = HomeFragment()
-            val fragmentManager = activity?.supportFragmentManager
-            val fragmentTransaction = fragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.nav_host_fragment_activity_home,fragment)
-            fragmentTransaction?.commit()
-
             val navView = findNavController()
             navView.navigate(R.id.navigation_home)
 
@@ -105,30 +95,7 @@ class MessageFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun composeWA(message: String){
-        messageViewModel.getUser().observe(requireActivity()){
-            val text = """
-                Nama : ${it.name}
-                Komplek : ${it.komplek}
-                Blok : ${it.Blok}
-                No. Rumah : ${it.noRumah}
-                Pesan : $message
-            """.trimIndent()
-            val uri = "https://api.whatsapp.com/send?phone=${Phone}"+"&text=" + URLEncoder.encode(text, "UTF-8")
-            val i =  Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(uri)
-            startActivity(i)
-        }
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     companion object {
-        private const val Phone = "6282215760138"
         private const val ADDRESS = "aliefmabdillah09@gmail.com"
         private const val SUBJECT = "REQUEST JEMPUT"
         private const val TYPE = "text/plain"

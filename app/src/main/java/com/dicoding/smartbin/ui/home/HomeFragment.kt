@@ -3,7 +3,6 @@ package com.dicoding.smartbin.ui.home
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -19,15 +18,12 @@ import com.dicoding.smartbin.R
 import com.dicoding.smartbin.data.local.UserModel
 import com.dicoding.smartbin.databinding.FragmentHomeBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
-import com.dicoding.smartbin.ui.HomeActivity
 import com.dicoding.smartbin.utils.ForegroundService
 import com.firebase.client.DataSnapshot
 import com.firebase.client.Firebase
 import com.firebase.client.FirebaseError
 import com.firebase.client.ValueEventListener
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -46,6 +42,15 @@ class HomeFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewLifecycleOwner.lifecycleScope.launch {
+            homeViewModel.getUser().observe(viewLifecycleOwner){ user ->
+                renderView(user)
+            }
+        }
     }
 
     private fun renderView(user: UserModel) {
@@ -73,20 +78,28 @@ class HomeFragment : Fragment() {
                             if(volume == 100){
                                 val requestState = sp.getBoolean("REQUEST_STATE", false)
 
-                                val intent = Intent(requireActivity(), ForegroundService::class.java)
-                                intent.putExtra("name", user.name)
+                                val activity = activity
+                                if (activity != null && isAdded){
+                                    val intent = Intent(requireActivity(), ForegroundService::class.java)
+                                    intent.putExtra("name", user.name)
 
-                                if (!requestState){
-                                    CHECK = true
-                                    if (Build.VERSION.SDK_INT >= 26) {
-                                        activity?.startForegroundService(intent)
-                                    } else {
-                                        activity?.startService(intent)
-                                    }
-                                }else{
-                                    if (CHECK){
-                                        activity?.stopService(intent)
-                                        CHECK = false
+                                    if (!requestState){
+                                        CHECK = true
+//                                    createNotification(user.name)
+
+                                        if (Build.VERSION.SDK_INT >= 26) {
+                                            requireActivity().startForegroundService(intent)
+                                        } else {
+                                            requireActivity().startService(intent)
+                                        }
+                                    }else{
+//                                    if (CHECK){
+//                                        cancelNotification()
+//                                    }
+                                        if (CHECK){
+                                            requireActivity().stopService(intent)
+                                            CHECK = false
+                                        }
                                     }
                                 }
                             }
@@ -109,42 +122,40 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun createNotification(name: String) {
-        val requestId = System.currentTimeMillis()
-        val intent = Intent(requireActivity(), HomeActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        }
-        val pendingIntent = PendingIntent.getActivity(
-            requireActivity(),
-            requestId.toInt(),
-            intent,
-            PendingIntent.FLAG_IMMUTABLE)
+    fun createNotification(name: String) {
 
-        val mNotifManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val activity = activity
+        if (activity != null && isAdded){
+            val mNotifManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val builder = NotificationCompat.Builder(requireActivity(), CHANNEL_ID)
-            .setSmallIcon(R.drawable.smart_bin_small)
-            .setContentTitle(getString(R.string.notif_title, name))
-            .setContentText(getString(R.string.notif_message))
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
+            val builder = NotificationCompat.Builder(requireActivity(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.smart_bin_small)
+                .setContentTitle(getString(R.string.notif_title, name))
+                .setContentText(getString(R.string.notif_message))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setSound(null)
+                .setAutoCancel(true)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            /* Create or update. */
-            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
-            channel.description = CHANNEL_NAME
-            builder.setChannelId(CHANNEL_ID)
-            mNotifManager.createNotificationChannel(channel)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                /* Create or update. */
+                val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+                channel.description = CHANNEL_NAME
+                builder.setChannelId(CHANNEL_ID)
+                mNotifManager.createNotificationChannel(channel)
+            }
+
+            val notification = builder.build()
+            mNotifManager.notify(NOTIFICATION_ID, notification)
         }
 
-        val notification = builder.build()
-        mNotifManager.notify(NOTIFICATION_ID, notification)
     }
 
-    private fun cancelNotification() {
-        val mNotifManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        mNotifManager.cancel(NOTIFICATION_ID)
+    fun cancelNotification() {
+
+        if (activity != null && isAdded){
+            val mNotifManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            mNotifManager.cancel(NOTIFICATION_ID)
+        }
     }
 
     companion object{

@@ -9,7 +9,7 @@ import retrofit2.http.POST
 interface ApiService {
     //endpoint register
     @FormUrlEncoded
-    @POST("userAPI/register.php")
+    @POST("register")
     fun register(
         @Field("name") name: String,
         @Field("nama_komplek") nama_komplek: String,
@@ -20,13 +20,13 @@ interface ApiService {
 
     //endpoint login
     @FormUrlEncoded
-    @POST("userAPI/login.php")
+    @POST("login")
     fun login(
         @Field("email") email: String,
         @Field("password") password: String
     ):Call<LoginResponse>
 
     //endpoint daftar Komplek
-    @GET("userAPI/listKomplek.php")
+    @GET("listKomplek")
     fun getKomplek():Call<KomplekResponse>
 }

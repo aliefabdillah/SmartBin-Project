@@ -16,7 +16,6 @@ import kotlinx.coroutines.Job
 
 class ForegroundService : Service() {
     private val serviceJob = Job()
-    private val serviceScope = CoroutineScope(Dispatchers.Main + serviceJob)
 
     override fun onBind(intent: Intent): IBinder {
         throw UnsupportedOperationException("Not yet implemented")

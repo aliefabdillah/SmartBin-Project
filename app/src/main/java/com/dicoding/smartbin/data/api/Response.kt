@@ -10,15 +10,6 @@ data class RegisterRespone(
 	val message: String,
 )
 
-data class Response(
-
-	@field:SerializedName("error")
-	val error: String,
-
-	@field:SerializedName("users")
-	val users: List<UsersItem>
-)
-
 data class LoginResponse(
 	@field:SerializedName("error")
 	val error: String,

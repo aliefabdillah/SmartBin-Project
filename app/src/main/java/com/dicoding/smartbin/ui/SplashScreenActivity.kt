@@ -2,12 +2,11 @@ package com.dicoding.smartbin.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.viewModels
-import com.dicoding.smartbin.R
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.smartbin.databinding.ActivitySplashScreenBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
 import com.dicoding.smartbin.ui.home.HomeViewModel

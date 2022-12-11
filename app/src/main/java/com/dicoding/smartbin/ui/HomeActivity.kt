@@ -4,16 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,10 +16,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.dicoding.smartbin.R
 import com.dicoding.smartbin.databinding.ActivityHomeBinding
 import com.dicoding.smartbin.modelsfactory.ViewModelFactory
-import com.dicoding.smartbin.ui.home.HomeFragment
 import com.dicoding.smartbin.ui.home.HomeViewModel
 import com.dicoding.smartbin.ui.login.LoginActivity
-import kotlinx.coroutines.NonCancellable.cancel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
 

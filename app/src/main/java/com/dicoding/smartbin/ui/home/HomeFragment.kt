@@ -57,41 +57,45 @@ class HomeFragment : Fragment() {
 
             val mRef = Firebase("https://smartbin-35eab-default-rtdb.firebaseio.com/")
             val data = mRef.child(user.komplek).child(user.Blok).child(user.noRumah)
+            val sp = context!!.getSharedPreferences("SmartBin", Context.MODE_PRIVATE)
 
             if (user.isLogin){
                 data.addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()){
-                            var volume = (dataSnapshot.value as Long).toInt()
-                            if (volume > 100){
-                                volume = 100
-                            }
+                            val volume = (dataSnapshot.value as Long).toInt()
+
                             tvVolumePercent.text = "$volume%"
                             ObjectAnimator.ofInt(binding.progressBar, "progress", volume)
                                 .setDuration(2000)
                                 .start()
 
                             if(volume == 100){
-                                val sp = context?.getSharedPreferences("SmartBin", Context.MODE_PRIVATE)
-                                val requestState = sp?.getBoolean("REQUEST_STATE", false)
+                                val requestState = sp.getBoolean("REQUEST_STATE", false)
 
-                                val intent = Intent(context, ForegroundService::class.java)
+                                val intent = Intent(requireActivity(), ForegroundService::class.java)
                                 intent.putExtra("name", user.name)
-                                if (!requestState!!){
+
+                                if (!requestState){
+                                    CHECK = true
                                     if (Build.VERSION.SDK_INT >= 26) {
                                         activity?.startForegroundService(intent)
                                     } else {
                                         activity?.startService(intent)
                                     }
                                 }else{
-                                    activity?.stopService(intent)
+                                    if (CHECK){
+                                        activity?.stopService(intent)
+                                        CHECK = false
+                                    }
                                 }
                             }
                         }else{
                             val dataRef = dataSnapshot.ref
                             dataRef.setValue(0)
+                            tvVolumePercent.text = "0%"
                             ObjectAnimator.ofInt(binding.progressBar, "progress", 0)
-                            .setDuration(2000)
+                                .setDuration(2000)
                                 .start()
                         }
                     }
@@ -147,6 +151,7 @@ class HomeFragment : Fragment() {
         private const val CHANNEL_ID = "FULL_NOTIFICATION"
         private const val CHANNEL_NAME = "SmartBin Channel"
         private const val NOTIFICATION_ID = 1
+        private var CHECK = false
     }
 
 }

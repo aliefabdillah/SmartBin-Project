@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginActivity" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/logo_smartBin"
+            android:layout_width="146dp"
+            android:layout_height="75dp"
+            android:scaleType="center"
+            android:src="@drawable/smart_bin_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.204"
+            android:contentDescription="@string/logo_smartbin" />
+
+        <com.dicoding.smartbin.ui.customview.InputEditText
+            android:id="@+id/ed_login_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:drawablePadding="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:hint="@string/hint_email"
+            android:textColorHint="@color/dark_green"
+            android:textColor="@color/dark_green"
+            android:inputType="textWebEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_smartBin"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        <com.dicoding.smartbin.ui.customview.PasswordEditText
+            android:id="@+id/ed_login_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:drawablePadding="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:hint="@string/hint_password"
+            android:textColorHint="@color/dark_green"
+            android:textColor="@color/dark_green"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_login_email"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:text="@string/login"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_login_password" />
+
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:text="@string/dont_have_acc"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <ProgressBar
+            android:id="@+id/loadingIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:indeterminateTint="?attr/colorPrimaryVariant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

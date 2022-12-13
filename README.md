@@ -12,8 +12,8 @@ Bahasa Pemrograman
 - C++
 - PHP
 
-Framework dan Library Tambahan
-○ Firebase (Realtime Database)
-○ RetroFit
-○ API : https://api-smartbin.000webhostapp.com/
+Framework dan Library Tambahan :
+- Firebase (Realtime Database)
+- RetroFit
+- API : https://api-smartbin.000webhostapp.com/
 
